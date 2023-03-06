@@ -144,6 +144,9 @@ def load_vtk(filepath):
     elif file_extension == '.vtk':
         reader = vtk.vtkDataSetReader()
         reader.SetFileName(filepath)
+        reader.ReadAllScalarsOn()
+        reader.ReadAllVectorsOn()
+        reader.ReadAllTensorsOn()
         reader.Update()
 
         if reader.GetUnstructuredGridOutput() is not None:
